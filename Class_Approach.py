@@ -1,7 +1,7 @@
 import numpy as np
 import nnfs
 
-
+nnfs.init()
 
 class Layer_Dense:
     def __init__(self, n_inputs, n_neurons):
