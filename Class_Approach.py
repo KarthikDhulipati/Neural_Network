@@ -1,4 +1,7 @@
 import numpy as np
+import nnfs
+
+
 
 class Layer_Dense:
     def __init__(self, n_inputs, n_neurons):
@@ -11,7 +14,10 @@ class Layer_Dense:
     def forward(self, inputs):
         self.output = np.dot(inputs, self.weights) + self.biases
         # print("self.output = ", self.output)
-        
+
+class Activation_ReLu:
+    def forward(self, inputs):
+        self.output = np.maximum(0, inputs)
 
 input_data = [[1, 2, 3, 2.5],           # Sample Input Data
               [2.0, 5.0, 1.0, 2.0],
