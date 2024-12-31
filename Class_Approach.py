@@ -1,5 +1,6 @@
 import numpy as np
 import nnfs
+from nnfs.datasets import spiral_data
 
 nnfs.init()
 
@@ -19,9 +20,9 @@ class Activation_ReLu:
     def forward(self, inputs):
         self.output = np.maximum(0, inputs)
 
-input_data = [[1, 2, 3, 2.5],           # Sample Input Data
-              [2.0, 5.0, 1.0, 2.0],
-              [-1.5, 2.7, 3.3, -0.8]]
+X = [[1, 2, 3, 2.5],           # Sample Input Data
+     [2.0, 5.0, 1.0, 2.0],
+     [-1.5, 2.7, 3.3, -0.8]]
 
 '''
 This current approach requires us to code the entire network in 2 phases.
@@ -33,12 +34,12 @@ Phase 2 involves the chaining of the layers one after another to perform the For
 in the neural network.
 '''
 
-layer1 = Layer_Dense(len(input_data[0]), len(input_data))       # Phase 1
-layer2 = Layer_Dense(len(input_data), 10)
+layer1 = Layer_Dense(len(X[0]), len(X))       # Phase 1
+layer2 = Layer_Dense(len(X), 10)
 layer3 = Layer_Dense(10, 15)
 layer4 = Layer_Dense(15, 1)
 
-layer1.forward(input_data)                                      # Phase 2
+layer1.forward(X)                                      # Phase 2
 layer2.forward(layer1.output)
 layer3.forward(layer2.output)
 layer4.forward(layer3.output)
