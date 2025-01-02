@@ -67,3 +67,4 @@ print("Layer1 output = ", layer1.output)
 
 activation1.forward(layer1.output)
 print("\nActivation1 layer1 output = ", activation1.output)
+
